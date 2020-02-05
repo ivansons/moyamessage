@@ -1,0 +1,34 @@
+﻿
+<!-- credits -->
+<div class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
+    <div class="navbar-nav">
+        <a class="nav-item nav-link" routerLink="/">Home</a>
+        <a class="nav-item nav-link" (click)="logout()">Logout</a>
+    </div>
+  </div>
+  <div class="d-flex" id="wrapper">
+    <!-- Sidebar -->
+    <div class="bg-light border-right" id="sidebar-wrapper">
+        <div class="sidebar-heading"><img class="binulogo" src="https://pub.bi.nu/img/logo-main.png"></div>
+        <div class="list-group list-group-flush">
+          <a href="#" class="list-group-item list-group-item-action bg-light">Dashboard</a>
+          <a href="#" class="list-group-item list-group-item-action bg-light">Sent Messages</a>
+          <a href="#" class="list-group-item list-group-item-action bg-light">Phone Book</a>
+        </div>
+      </div>
+      <!-- /#sidebar-wrapper -->
+
+       <!-- Page Content -->
+    <div id="page-content-wrapper">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+            
+    
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+    
+          </nav>
+          <router-outlet></router-outlet>
+    </div>
+      </div>
+    

@@ -1,0 +1,8 @@
+{
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/418702c0-cb0a-4c81-92de-80174921eaf3/resourceGroups/moya/providers/Microsoft.Web/sites/moyawebmessage",
+    "appService.deploySubpath": ""
+}

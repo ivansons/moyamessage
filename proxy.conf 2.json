@@ -1,0 +1,8 @@
+{
+    "/v1/dm": {
+        "target": "https://api.moya.app",
+        "secure": false,
+        "logLevel": "debug",
+        "changeOrigin": true
+    }
+}

@@ -1,3 +1,6 @@
+<div class="alert alert-success" role="alert" *ngIf="currentUser">
+        {{response}}
+      </div>
 <div class="container-fluid form-message">
     <form [formGroup]="form" (ngSubmit)="submitForm()">
         <div class="form-group input-group mb-4">

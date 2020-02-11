@@ -12,7 +12,7 @@
         <input type="number"  class="form-control mb-4" formControlName="receiver_numbers" placeholder="Receiver" />
         <div class="form-group input-group mb-4">
                 <div class="custom-file input-group-prepend">
-                    <input type="file" class="custom-file-input" (change)="uploadFile($event)" id="fileInput"
+                    <input type="file" class="custom-file-input" (change)="onFileChange($event)" id="fileInput"
                         aria-describedby="fileInput" />
                     <label class="custom-file-label input-group-text" for="fileInput">Bulk upload</label>
                 </div>

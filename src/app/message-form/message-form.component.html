@@ -1,16 +1,10 @@
-<div class="alert alert-success" role="alert" *ngIf="currentUser">
-        {{response}}
-      </div>
 <div class="container-fluid form-message">
-    <form [formGroup]="form" (ngSubmit)="submitForm()">
-        <div class="form-group input-group mb-4">
-            <div class="custom-file input-group-prepend">
-                <input type="file" class="custom-file-input" (change)="uploadFile($event)" id="fileInput"
-                    aria-describedby="fileInput" />
-                <label class="custom-file-label input-group-text" for="fileInput">Bulk upload</label>
-            </div>
-        </div>
+        <button type="button" routerLink="/bulk-message" class="btn btn-outline-success">Switch Mode</button>
 
+        <h5 class="card-header info-color white-text text-center py-4">
+                <strong>Single Messaging</strong>
+              </h5>
+    <form [formGroup]="form" (ngSubmit)="submitForm()">
         <div class="form-group input-group-lg">
             <label for="textInput">Sender</label>
             <input type="number"  class="form-control mb-4" formControlName="sender_number" placeholder="Sender" />

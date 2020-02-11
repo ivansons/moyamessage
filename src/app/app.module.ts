@@ -12,21 +12,23 @@ import { appRoutingModule } from './app.routing';
 import { BasicAuthInterceptor, ErrorInterceptor } from './_helpers';
 import { HomeComponent } from './home';
 import { LoginComponent } from './login';
-import { MessageFormComponent } from './message-form/message-form.component';
+import { MessageFormComponent } from './message-form/message-form.component';;
+import { BulkMessagesFormComponent } from './bulk-messages-form/bulk-messages-form.component'
 
 @NgModule({
     imports: [
         BrowserModule,
         ReactiveFormsModule,
         HttpClientModule,
-        appRoutingModule
+        appRoutingModule,
     ],
     declarations: [
         AppComponent,
         HomeComponent,
         LoginComponent
 ,
-        MessageFormComponent    ],
+        MessageFormComponent ,
+        BulkMessagesFormComponent   ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },

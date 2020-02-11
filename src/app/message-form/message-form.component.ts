@@ -42,7 +42,7 @@ export class MessageFormComponent implements OnInit {
        formData.append('message', this.form.get('message').value);
     */
     /* const httpOptions = {
-      headers: new HttpHeaders({ 
+      headers: new HttpHeaders({
         'Access-Control-Allow-Origin':'*',
         'Content-Type':'application/json',
         'Host':'https://api.moya.app',

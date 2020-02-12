@@ -11,7 +11,8 @@ import * as XLSX from 'xlsx';
 export class BulkMessagesFormComponent implements OnInit {
   name = 'This is XLSX TO JSON CONVERTER';
   willDownload = false;
-
+  public status:any;
+  public data: any[]=[];
   form: FormGroup;
   public sender_number: any = '';
   public receiver_numbers: any = '';
@@ -24,23 +25,29 @@ export class BulkMessagesFormComponent implements OnInit {
   }
 
   onFileChange(ev) {
-    let workBook = null;
-    let jsonData = null;
-    const reader = new FileReader();
-    const file = ev.target.files[0];
-    reader.onload = (event) => {
-      const data = reader.result;
-      workBook = XLSX.read(data, { type: 'binary' });
-      jsonData = workBook.SheetNames.reduce((initial, name) => {
-        const sheet = workBook.Sheets[name];
-        initial[name] = XLSX.utils.sheet_to_json(sheet);
-        return initial;
-      }, {});
-      const dataString = JSON.stringify(jsonData);
-      document.getElementById('output').innerHTML = dataString.slice(0, 300).concat("...");
-      this.setDownload(dataString);
-    }
-    reader.readAsBinaryString(file);
+    const target: DataTransfer = <DataTransfer> (ev.target);
+    if (target.files.length !== 1) throw new Error('Cannot use multiple files');
+    const reader: FileReader = new FileReader();
+    reader.onload = (e: any) => {
+      /* read workbook */
+      const bstr: string = e.target.result;
+      const wb: XLSX.WorkBook = XLSX.read(bstr, { type: 'binary' });
+
+      /* grab first sheet */
+      const wsname: string = wb.SheetNames[0];
+      const ws: XLSX.WorkSheet = wb.Sheets[wsname];
+
+      /* save data */
+      // tslint:disable-next-line: no-angle-bracket-type-assertion
+      let temp = <AOA> (XLSX.utils.sheet_to_json(ws, { header: 1 }));
+      for(let i=1;i<temp.length;i++){
+        this.data.push(temp[i][0].toString());
+      }
+      console.log(this.data);
+
+    };
+    reader.readAsBinaryString(target.files[0]);
+
   }
 
 
@@ -58,22 +65,32 @@ export class BulkMessagesFormComponent implements OnInit {
   ngOnInit() {
   }
 
-  /*submitForm() {
+  submitForm() {
 
-    var sender = this.form.get('sender_number').value
+
     const data = {
       sender_number: this.form.get('sender_number').value.toString(),
-      receiver_numbers: this.form.get('receiver_numbers').value,
+      receiver_numbers: this.data, /* this.form.get('receiver_numbers').value, */
       message: this.form.get('message').value
 
     };
     this.http.post('/v1/bulk-message', data).subscribe(
-      (response) => console.log(response),
+      (response) => {
+        if(response['error']==false){
+          console.log("Sucess");
+          this.status="Successfully sent messages!";
+        }else{
+          console.log('error');
+          this.status="Failed to send messages!";
+
+        }
+        console.log(response)
+      },
       (error) => console.log(error)
     );
-  }*/
+  }
 
-submitForm() {
-  console.log(this.form.value);
-}
+  /* submitForm() {
+    console.log(this.form.value);
+  } */
 }

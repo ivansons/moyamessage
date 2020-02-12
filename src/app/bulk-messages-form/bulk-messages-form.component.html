@@ -21,7 +21,11 @@
 
     <label for="textarea">Message</label>
     <textarea id="textarea" class="form-control mb-4" placeholder="Type message" formControlName="message"></textarea>
-
+    <h5>{{status}}</h5>
     <button class="btn green uppercase" type="submit">Send</button>
+    <div >
+        Message Sending to:
+        <p *ngFor='let i of data'>{{i}}</p>
+    </div>
 </form>
 </div>

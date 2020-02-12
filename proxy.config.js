@@ -4,6 +4,7 @@ const PROXY_CONFIG = [
     "/v1/dm",
     "/v1",
     "/dm",
+    '/v1/bulk-message'
     ],
     target: "https://api.moya.app",
     secure: false },

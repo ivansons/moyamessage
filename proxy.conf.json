@@ -4,5 +4,11 @@
         "secure": false,
         "logLevel": "debug",
         "changeOrigin": true
+    },
+    "/v1/bulk-message":{
+        "target": "https://api.moya.app",
+        "secure": false,
+        "logLevel": "debug",
+        "changeOrigin": true
     }
 }

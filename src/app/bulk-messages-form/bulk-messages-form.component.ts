@@ -39,7 +39,7 @@ export class BulkMessagesFormComponent implements OnInit {
 
       /* save data */
       // tslint:disable-next-line: no-angle-bracket-type-assertion
-      let temp = <AOA> (XLSX.utils.sheet_to_json(ws, { header: 1 }));
+      let temp = <any> (XLSX.utils.sheet_to_json(ws, { header: 1 }));
       for(let i=1;i<temp.length;i++){
         this.data.push(temp[i][0].toString());
       }
